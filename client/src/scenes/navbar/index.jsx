@@ -87,7 +87,7 @@ const NavBar = () => {
           <Message sx={{ fontSize: "25px" }} />
           <Notifications sx={{ fontSize: "25px" }} />
           <Help sx={{ fontSize: "25px" }} />
-          <FormControl variant="standard" value={fullName}>
+          <FormControl variant="standard">
             <Select
               value={fullName}
               sx={{
@@ -108,7 +108,7 @@ const NavBar = () => {
               <MenuItem value={fullName}>
                 <Typography>{fullName}</Typography>
               </MenuItem>
-              <MenuItem value={fullName}>
+              <MenuItem>
                 <Typography onClick={() => dispatch(setLogout())}>
                   Log Out
                 </Typography>
@@ -166,7 +166,7 @@ const NavBar = () => {
             <Message sx={{ fontSize: "25px" }} />
             <Notifications sx={{ fontSize: "25px" }} />
             <Help sx={{ fontSize: "25px" }} />
-            <FormControl variant="standard" value={fullName}>
+            <FormControl variant="standard">
               <Select
                 value={fullName}
                 sx={{
@@ -187,7 +187,7 @@ const NavBar = () => {
                 <MenuItem value={fullName}>
                   <Typography>{fullName}</Typography>
                 </MenuItem>
-                <MenuItem value={fullName}>
+                <MenuItem>
                   <Typography onClick={() => dispatch(setLogout())}>
                     Log Out
                   </Typography>
