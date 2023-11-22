@@ -3,8 +3,9 @@ import {
   EditOutlined,
   LocationOnOutlined,
   WorkOutlineOutlined,
-  TypeSpecimenOutlined,
 } from "@mui/icons-material";
+import LinkedInIcon from "@mui/icons-material/LinkedIn";
+import TwitterIcon from "@mui/icons-material/Twitter";
 import { Box, Typography, Divider, useTheme } from "@mui/material";
 import UserImage from "components/UserImage";
 import FlexBetween from "components/FlexBetween";
@@ -62,7 +63,7 @@ const UserWidget = ({ userId, picturePath }) => {
               color={dark}
               fontWeight="500"
               sx={{
-                "&:over": {
+                "&:hover": {
                   color: palette.primary.light,
                   cursor: "pointer",
                 },
@@ -116,7 +117,7 @@ const UserWidget = ({ userId, picturePath }) => {
         </Typography>
         <FlexBetween gap="1rem" mb="0.5rem">
           <FlexBetween gap="1rem">
-            <img src="../assets/twitter.png" alt="twitter" />
+            <TwitterIcon sx={{ fontSize: 38, color: medium }} />
             <Box>
               <Typography color={main} fontWeight="500">
                 Twitter
@@ -128,7 +129,7 @@ const UserWidget = ({ userId, picturePath }) => {
         </FlexBetween>
         <FlexBetween gap="1rem">
           <FlexBetween gap="1rem">
-            <img src="../assets/linkedin.png" alt="linkedin" />
+            <LinkedInIcon sx={{ fontSize: 38, color: medium }} />
             <Box>
               <Typography color={main} fontWeight="500">
                 Linkedin
