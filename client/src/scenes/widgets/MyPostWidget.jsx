@@ -1,7 +1,6 @@
 import {
   EditOutlined,
   DeleteOutlined,
-  AttachFileOutlined,
   GifBoxOutlined,
   ImageOutlined,
   MicOutlined,
@@ -51,7 +50,7 @@ const MyPostWidget = ({ picturePath }) => {
       body: formData,
     });
     const posts = await response.json();
-    dispatch(setPosts(posts));
+    dispatch(setPosts({ posts }));
     setImage(null);
     setPost("");
   };
