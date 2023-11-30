@@ -1,5 +1,5 @@
 import { PersonAddOutlined, PersonRemoveOutlined } from "@mui/icons-material";
-import { Box, IconButton, Button, Typography, useTheme } from "@mui/material";
+import { Box, IconButton, Typography, useTheme } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import { setFriends } from "state";
 import FlexBetween from "./FlexBetween";
@@ -53,7 +53,7 @@ const Friend = ({ friendId, name, subtitle, userPicturePath }) => {
         />
         <Box
           onClick={() => {
-            navigate(`/proifle/${friendId}`);
+            navigate(`/users/${friendId}`);
             navigate(0);
           }}
         >
@@ -62,7 +62,10 @@ const Friend = ({ friendId, name, subtitle, userPicturePath }) => {
             variant="h5"
             fontWeight="500"
             sx={{
-              "&hover": { color: palette.primary.light, cursor: "pointer" },
+              "&:hover": {
+                color: palette.primary.light,
+                cursor: "pointer",
+              },
             }}
           >
             {name}

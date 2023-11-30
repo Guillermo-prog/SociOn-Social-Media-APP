@@ -4,7 +4,7 @@ import { setPosts } from "state";
 import PostWidget from "./PostWidget";
 
 const PostsWidget = ({ userId, isProfile = false }) => {
-  const disptatch = useDispatch();
+  const dispach = useDispatch();
   const posts = useSelector((state) => state.posts);
   const token = useSelector((state) => state.token);
 
@@ -15,17 +15,20 @@ const PostsWidget = ({ userId, isProfile = false }) => {
       headers: { Authorization: `Bearer ${token}` },
     });
     const data = await response.json();
-    disptatch(setPosts({ posts: data }));
+    dispach(setPosts({ posts: data }));
   };
 
   //Feed with specific User posts
   const getUserPosts = async () => {
-    const response = await fetch(`http://localhost:3001/${userId}/posts`, {
-      method: "GET",
-      headers: { Authorization: `Bearer ${token}` },
-    });
+    const response = await fetch(
+      `http://localhost:3001/posts/${userId}/posts`,
+      {
+        method: "GET",
+        headers: { Authorization: `Bearer ${token}` },
+      }
+    );
     const data = await response.json();
-    disptatch(setPosts({ posts: data }));
+    dispach(setPosts({ posts: data }));
   };
 
   useEffect(() => {
