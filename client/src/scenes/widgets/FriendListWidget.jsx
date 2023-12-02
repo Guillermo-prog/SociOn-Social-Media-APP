@@ -1,15 +1,16 @@
 import { Box, Typography, useTheme } from "@mui/material";
 import Friend from "components/Friend";
 import WidgetWrapper from "components/WidgetWrapper";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setFriends } from "state";
 
-const FriendListWidget = ({ userId }) => {
+const FriendListWidget = ({ userId, isLoggedUserList }) => {
   const dispatch = useDispatch();
+  const [friendsList, setFriendsList] = useState([]);
   const { palette } = useTheme();
   const token = useSelector((state) => state.token);
-  const friends = useSelector((state) => state.user.friends);
+  const loggedUserFriends = useSelector((state) => state.user.friends);
 
   const getFriends = async () => {
     const response = await fetch(
@@ -21,12 +22,15 @@ const FriendListWidget = ({ userId }) => {
     );
     const data = await response.json();
     console.log(data);
-    dispatch(setFriends({ friends: data }));
+    if (isLoggedUserList) {
+      dispatch(setFriends({ friends: data })); //if isLoggedUserList global state friend list is used (logged user friends list)
+    } else {
+      setFriendsList(data); //if !isLoggedUserList local state list for not modifying the friends state incorrectly
+    }
   };
-
   useEffect(() => {
     getFriends();
-  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [friendsList]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <WidgetWrapper>
@@ -39,16 +43,37 @@ const FriendListWidget = ({ userId }) => {
         Friend List
       </Typography>
       <Box display="flex" flexDirection="column" gap="1.5rem">
-        {friends.map((friend) => (
-          <Friend
-            key={friend._id}
-            friendId={friend._id}
-            name={`${friend.firstName} ${friend.lastName}`}
-            subtitle={friend.occupation}
-            userPicturePath={friend.picturePath}
-          />
-        ))}
+        {isLoggedUserList ? (
+          loggedUserFriends.length > 0 ? (
+            loggedUserFriends.map((friend) => (
+              <Friend
+                key={friend._id}
+                friendId={friend._id}
+                name={`${friend.firstName} ${friend.lastName}`}
+                subtitle={friend.occupation}
+                userPicturePath={friend.picturePath}
+                isLoggedUserList={isLoggedUserList}
+              />
+            ))
+          ) : (
+            <p>There are no friends yet :(</p>
+          )
+        ) : friendsList.length > 0 ? (
+          friendsList.map((friend) => (
+            <Friend
+              key={friend._id}
+              friendId={friend._id}
+              name={`${friend.firstName} ${friend.lastName}`}
+              subtitle={friend.occupation}
+              userPicturePath={friend.picturePath}
+              isLoggedUserList={isLoggedUserList}
+            />
+          ))
+        ) : (
+          <p>There are no friends yet :( </p>
+        )}
       </Box>
+      <Box m="1rem 0" />
     </WidgetWrapper>
   );
 };

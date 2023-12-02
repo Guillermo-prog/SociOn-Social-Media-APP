@@ -3,7 +3,7 @@ export const advert1 = {
   sponsorName: "MikaCosmetics",
   sponsorWebsite: "mikacosmetics.com",
   description:
-    "Your pathway to stunning and immaculate beauty and made sure your skin is exfoliating skin and shining like light",
+    "Indulge in a symphony of flavors that dance on your taste buds, crafted to perfection for an irresistible journey to savory bliss – where every bite is a celebration of mouthwatering delight!",
 };
 
 export const advert2 = {

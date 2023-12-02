@@ -11,7 +11,7 @@ const UserImage = ({ image, size = "60px" }) => {
           objectFit: "cover",
           borderRadius: "50%",
           cursor: "pointer",
-          filter: hovered ? "brightness(1.2)" : "brightness(1)",
+          filter: hovered ? "brightness(1.2)" : null,
         }}
         width={size}
         height={size}

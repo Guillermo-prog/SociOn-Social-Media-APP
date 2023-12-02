@@ -6,7 +6,13 @@ import FlexBetween from "./FlexBetween";
 import UserImage from "./UserImage";
 import { useNavigate } from "react-router-dom";
 
-const Friend = ({ friendId, name, subtitle, userPicturePath }) => {
+const Friend = ({
+  friendId,
+  name,
+  subtitle,
+  userPicturePath,
+  isLoggedUserList,
+}) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { _id } = useSelector((state) => state.user);
@@ -44,16 +50,24 @@ const Friend = ({ friendId, name, subtitle, userPicturePath }) => {
   return (
     <FlexBetween>
       <FlexBetween gap="1rem">
-        <UserImage
-          image={userPicturePath}
-          size="55px"
-          sx={{
-            "&hover": { color: palette.primary.light, cursor: "pointer" },
-          }}
-        />
         <Box
           onClick={() => {
-            navigate(`/users/${friendId}`);
+            navigate(`/profile/${friendId}`);
+            navigate(0);
+          }}
+        >
+          <UserImage
+            image={userPicturePath}
+            size="55px"
+            sx={{
+              "&hover": { color: palette.primary.light, cursor: "pointer" },
+            }}
+          />
+        </Box>
+
+        <Box
+          onClick={() => {
+            navigate(`/profile/${friendId}`);
             navigate(0);
           }}
         >
@@ -75,18 +89,37 @@ const Friend = ({ friendId, name, subtitle, userPicturePath }) => {
           </Typography>
         </Box>
       </FlexBetween>
-      {!isLoggedUser ? (
-        <IconButton
-          onClick={() => patchFriend()}
-          sx={{ backgroundColor: primaryLight, p: "0.6rem" }}
-        >
-          {isFriend ? (
-            <PersonRemoveOutlined sx={{ color: primaryDark }} />
-          ) : (
-            <PersonAddOutlined sx={{ color: primaryDark }} />
-          )}
-        </IconButton>
-      ) : (
+
+      {isLoggedUserList ? (
+        !isLoggedUser ? (
+          <IconButton
+            onClick={() => patchFriend()}
+            sx={{ backgroundColor: primaryLight, p: "0.6rem" }}
+          >
+            {isFriend ? (
+              <PersonRemoveOutlined sx={{ color: primaryDark }} />
+            ) : (
+              <PersonAddOutlined sx={{ color: primaryDark }} />
+            )}
+          </IconButton>
+        ) : (
+          <IconButton
+            disabled
+            sx={{
+              "&:disabled": {
+                backgroundColor: primaryLight,
+              },
+              p: "0.6rem",
+              color: palette.background.alt,
+              borderRadius: "3rem",
+            }}
+          >
+            <Typography variant="h6" color={primaryDark}>
+              You
+            </Typography>
+          </IconButton>
+        )
+      ) : isLoggedUser ? (
         <IconButton
           disabled
           sx={{
@@ -99,10 +132,10 @@ const Friend = ({ friendId, name, subtitle, userPicturePath }) => {
           }}
         >
           <Typography variant="h6" color={primaryDark}>
-            Yours
+            You
           </Typography>
         </IconButton>
-      )}
+      ) : undefined}
     </FlexBetween>
   );
 };
