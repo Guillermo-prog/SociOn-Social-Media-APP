@@ -1,4 +1,4 @@
-# Project Name
+# SociOn Social Media APP
 
 ## Description
 
