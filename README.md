@@ -23,7 +23,7 @@ This project is a responsive social media application developed using the MERN s
 1. **Clone Repository:**
 
    ```bash
-   git clone https://github.com/your-username/your-project.git
+   git clone https://github.com/Guillermo-prog/SocialNetwork.git
    ```
 
 2. **Client Setup:**
