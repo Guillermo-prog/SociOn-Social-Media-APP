@@ -1,10 +1,10 @@
-# SociOn Social Media APP
+# SociOn Social Media APP 📱🌐
 
-## Description
+## Description  📋
 
 This project is a responsive social media application developed using the MERN stack (MongoDB, Express.js, React, Node.js). The client and server sides are completly implemented from scratch, incorporating both core stack libraries and additional ones like Material-UI for UI theming and styles, Redux Toolkit, Redux Persist, Multer, JWT, Yup, Formik, Bcrypt, among others.
 
-## Features
+## Features 🛠️
 
 - **Responsive Design**: Ensures a seamless user experience across various devices.
 - **Client-Side Development**: Utilizes React for building the dynamic user interface.
@@ -18,7 +18,7 @@ This project is a responsive social media application developed using the MERN s
 - **Form Validation**: Yup and Formik are used for form validation to ensure data integrity.
 - **Password Hashing**: Bcrypt is employed for secure password hashing.
 
-## Installation
+## Installation 🚀
 
 1. **Clone Repository:**
 
@@ -46,7 +46,7 @@ This project is a responsive social media application developed using the MERN s
      npm run dev
      ```
 
-## Usage
+## Usage 👩‍💻
 
 1. Open your browser and navigate to `http://localhost:3000`.
 2. Explore the features of the application.
