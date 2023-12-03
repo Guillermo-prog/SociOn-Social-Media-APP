@@ -1,4 +1,4 @@
-# SociOn Social Media APP 📱🌐
+# SociOn Social Media APP 💻🌐📱
 
 ## Description  📋
 
