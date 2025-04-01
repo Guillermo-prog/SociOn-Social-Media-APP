@@ -45,11 +45,11 @@ This project is a responsive social media application developed using the MERN s
      ```bash
      npm run dev
      ```
-
-[![DOI](https://zenodo.org/badge/666368394.svg)](https://doi.org/10.5281/zenodo.15119034)
-
-## RELEASES 
+     
 ## Usage 👩‍💻
 
 1. Open your browser and navigate to `http://localhost:3000`.
 2. Explore the features of the application.
+
+## RELEASES 
+[![DOI](https://zenodo.org/badge/666368394.svg)](https://doi.org/10.5281/zenodo.15119034)
